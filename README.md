@@ -269,7 +269,6 @@ ModelTalk/
 
 - 📧 Email: abc231@foxmail.com
 - 🐛 Issues: [GitHub Issues](https://github.com/jingzhi123/ModelTalk/issues)
-- 💬 Discussions: [GitHub Discussions](https://github.com/jingzhi123/ModelTalk/discussions)
 
 ---
 
