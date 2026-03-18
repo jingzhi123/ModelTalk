@@ -94,7 +94,7 @@ auth-dir: "~/.cli-proxy-api"
 克隆本仓库：
 
 ```bash
-git clone https://github.com/yourusername/ModelTalk.git
+git clone https://github.com/jingzhi123/ModelTalk.git
 cd ModelTalk
 ```
 
@@ -267,9 +267,9 @@ ModelTalk/
 
 ## 联系方式
 
-- 📧 Email: your.email@example.com
-- 🐛 Issues: [GitHub Issues](https://github.com/yourusername/ModelTalk/issues)
-- 💬 Discussions: [GitHub Discussions](https://github.com/yourusername/ModelTalk/discussions)
+- 📧 Email: abc231@foxmail.com
+- 🐛 Issues: [GitHub Issues](https://github.com/jingzhi123/ModelTalk/issues)
+- 💬 Discussions: [GitHub Discussions](https://github.com/jingzhi123/ModelTalk/discussions)
 
 ---
 
