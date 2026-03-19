@@ -276,6 +276,6 @@ ModelTalk/
 
 **如果这个项目对你有帮助，请给个 ⭐️ Star 支持一下！**
 
-Made with ❤️ by [Your Name]
+Made with ❤️ by JohnConner
 
 </div>
