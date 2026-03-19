@@ -35,25 +35,62 @@ class AIAssistant:
         self.load_history()
     
     def get_available_model(self):
-        """获取可用的模型"""
+        """获取可用的模型（初始化时使用）"""
+        try:
+            models = self.client.models.list()
+            model_list = [model.id for model in models.data]
+            
+            if not model_list:
+                print("未找到可用模型，使用默认值")
+                return "default"
+            
+            # 默认使用 gpt-5.3-codex
+            model_name = "gpt-5.3-codex" if "gpt-5.3-codex" in model_list else model_list[0]
+            print(f"使用模型: {model_name}")
+            return model_name
+                    
+        except Exception as e:
+            print(f"获取模型列表失败: {e}")
+            return "default"
+    
+    def switch_model(self):
+        """切换模型（用户主动切换时使用）"""
         print("正在获取可用模型列表...")
         try:
             models = self.client.models.list()
-            print("\n可用的模型：")
-            for i, model in enumerate(models.data, 1):
-                print(f"  {i}. {model.id}")
+            model_list = [model.id for model in models.data]
             
-            if models.data:
-                model_name = "gpt-5.3-codex"  # 默认使用指定模型
-                print(f"\n使用模型: {model_name}")
-                return model_name
-            else:
-                print("\n未找到可用模型，使用默认值")
-                return "default"
+            if not model_list:
+                print("\n未找到可用模型")
+                return
+            
+            print(f"\n当前模型: {self.model_name}")
+            print("\n可用的模型：")
+            for i, model in enumerate(model_list, 1):
+                print(f"  {i}. {model}")
+            
+            # 让用户选择
+            while True:
+                choice = input(f"\n请选择模型 (1-{len(model_list)}) 或按回车取消: ").strip()
+                
+                if not choice:
+                    print("取消切换")
+                    return
+                
+                try:
+                    index = int(choice) - 1
+                    if 0 <= index < len(model_list):
+                        self.model_name = model_list[index]
+                        print(f"\n✅ 已切换到模型: {self.model_name}")
+                        return
+                    else:
+                        print("无效的选择，请重试")
+                except ValueError:
+                    print("请输入数字")
+                    
         except Exception as e:
             print(f"获取模型列表失败: {e}")
-            print("使用默认模型名称")
-            return "default"
+
     
     def load_history(self):
         """加载历史会话"""
@@ -818,7 +855,7 @@ class AIAssistant:
                     elif choice == '3':
                         self.clear_history()
                     elif choice == '4':
-                        self.model_name = self.get_available_model()
+                        self.switch_model()
                     elif choice == '5':
                         self.export_history()
                     elif choice == '6':
